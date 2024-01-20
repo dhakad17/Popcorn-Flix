@@ -5,7 +5,6 @@ import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 import { loginUser } from "../controllers/user.controller.js";
 import { logOutUser } from "../controllers/user.controller.js";
-import { verify } from "jsonwebtoken";
 
 
 
@@ -39,7 +38,7 @@ router.route("/current-user").get(verifyJWT,getCurrentUser)
 router.route("/update-account").patch(verifyJWT,updateAccountDetails)
 router.route("/update-avatar").patch(verifyJWT,upload.single("avatar"),updateUserAvatar)
 
-router.route("/cover-image").patch(verifyJWT,upload.single("/coverImage"),updateUserCoverImage)
+router.route("/cover-image").patch(verifyJWT,upload.single("coverImage"),updateUserCoverImage)
 
 router.route("/channel/:username").get(verifyJWT,getUserChannelProfile)
 router.route("/watch-history").get(verifyJWT,getWatchHistory)
